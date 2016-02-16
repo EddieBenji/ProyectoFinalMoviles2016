@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="computomovil.fmat.lalo.integratingproject.FormStudent">
+
+    <EditText
+        android:id="@+id/text_matricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/text_name"
+        android:layout_alignLeft="@+id/text_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/text_name"
+        android:layout_alignStart="@+id/text_name"
+        android:enabled="false"
+        android:inputType="text"
+        android:text="@string/text_matricula" />
+
+    <EditText
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btn_update"
+        android:layout_alignRight="@+id/btn_update"
+        android:layout_below="@+id/text_matricula"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/text_name" />
+
+    <EditText
+        android:id="@+id/text_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_save"
+        android:layout_alignStart="@+id/btn_save"
+        android:layout_below="@+id/text_name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/text_lastName" />
+
+    <Button
+        android:id="@+id/btn_save"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:onClick="saveStudent"
+        android:text="@string/lbl_save" />
+
+    <Button
+        android:id="@+id/btn_update"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_save"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="updateStudent"
+        android:text="@string/lbl_update" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_save"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="deleteStudent"
+        android:text="@string/lbl_delete" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/text_matricula"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/text_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/text_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/text_lastName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/text_lastName"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+</RelativeLayout>
