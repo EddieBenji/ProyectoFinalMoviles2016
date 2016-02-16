@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
  * Project: Database sqlite
  */
 class UserContract implements BaseColumns {
-    public static final String TABLE_NAME = "usuarios";
+    public static final String TABLE_NAME = "users";
     public static final String COLUMN_NAME_USERNAME = "username";
     public static final String COLUMN_NAME_PASSWORD = "password";
 
@@ -22,4 +22,7 @@ class UserContract implements BaseColumns {
 
     public static final String SQL_DELETE_USUARIOS =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+    public static final String SQL_SELECT_USER =
+            "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME_USERNAME + "=?";
 }

@@ -63,7 +63,7 @@ public class UserDataSource {
         Cursor cursor = database.query(UserContract.TABLE_NAME, allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            usuario = cursorToAlumno(cursor);
+            usuario = cursorToUser(cursor);
             usuarios.add(usuario);
             cursor.moveToNext();
         }
@@ -71,8 +71,17 @@ public class UserDataSource {
         return usuarios;
     }
 
-    private User cursorToAlumno(Cursor cursor) {
+    private User cursorToUser(Cursor cursor) {
         return new User(cursor.getString(0), cursor.getString(1));
     }
 
+    public User getUserByUsername(String username){
+        Cursor cursor = database.rawQuery(UserContract.SQL_SELECT_USER, new String[]{username});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return new User(cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_USERNAME)),
+                    cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_PASSWORD)));
+        }
+        return new User("empty", "empty");
+    }
 }
