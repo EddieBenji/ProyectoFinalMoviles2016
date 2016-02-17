@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import java.sql.SQLException;
 
-import computomovil.fmat.lalo.integratingproject.database.student.StudentDataSource;
+import computomovil.fmat.lalo.integratingproject.database.general.StudentDataSource;
 import computomovil.fmat.lalo.integratingproject.model.Student;
 import computomovil.fmat.lalo.integratingproject.services.StudentService;
 
@@ -39,6 +39,12 @@ public class StudentList extends ListActivity {
         setContentView(R.layout.activity_student_list);
         stdService = new StudentService();
         alumnoDS = new StudentDataSource(getApplicationContext());
+        try {
+            alumnoDS.open();
+            alumnoDS.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         setComponentsForWorking();
     }
 

@@ -1,4 +1,4 @@
-package computomovil.fmat.lalo.integratingproject.database.student;
+package computomovil.fmat.lalo.integratingproject.database.general;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,21 +18,21 @@ import computomovil.fmat.lalo.integratingproject.model.Student;
  */
 public class StudentDataSource {
     private SQLiteDatabase database;
-    private StudentDBHelper alumnoDBHelper;
+    private DBHelper dBHelper;
     private String[] allColumns = {StudentContract.COLUMN_NAME_MATRICULA,
             StudentContract.COLUMN_NAME_NOMBRE,
             StudentContract.COLUMN_NAME_APELLIDO};
 
     public StudentDataSource(Context context) {
-        alumnoDBHelper = new StudentDBHelper(context);
+        dBHelper = new DBHelper(context);
     }
 
     public void open() throws SQLException {
-        database = alumnoDBHelper.getWritableDatabase();
+        database = dBHelper.getWritableDatabase();
     }
 
     public void close() {
-        alumnoDBHelper.close();
+        dBHelper.close();
     }
 
 

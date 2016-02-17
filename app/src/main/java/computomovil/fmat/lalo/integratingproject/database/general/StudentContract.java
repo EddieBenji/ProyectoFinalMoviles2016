@@ -1,4 +1,4 @@
-package computomovil.fmat.lalo.integratingproject.database.student;
+package computomovil.fmat.lalo.integratingproject.database.general;
 
 import android.provider.BaseColumns;
 

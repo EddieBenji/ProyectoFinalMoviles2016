@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import java.sql.SQLException;
 
-import computomovil.fmat.lalo.integratingproject.database.student.StudentDataSource;
+import computomovil.fmat.lalo.integratingproject.database.general.StudentDataSource;
 import computomovil.fmat.lalo.integratingproject.model.Student;
 
 public class FormStudent extends AppCompatActivity {

@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import computomovil.fmat.lalo.integratingproject.database.user.UserDataSource;
+import java.sql.SQLException;
+
+import computomovil.fmat.lalo.integratingproject.database.general.UserDataSource;
 import computomovil.fmat.lalo.integratingproject.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
+    UserDataSource userDataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         if (!getPreferences(Context.MODE_PRIVATE).getString("username", "NA").equals("NA")) {
             startStudentListActivity();
         }
+        userDataSource = new UserDataSource(getApplicationContext());
+        try {
+            //Crear base de datos
+            userDataSource.open();
+            userDataSource.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void login(View view) {
@@ -29,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         String username = ((TextView) findViewById(R.id.txtUser)).getText().toString();
         String password = ((TextView) findViewById(R.id.txtPassword)).getText().toString();
 
-        UserDataSource userDataSource = new UserDataSource(this.getApplication().getBaseContext());
 
         User newUser = userDataSource.getUserByUsername(username);
         if (!newUser.getUsername().equals("empty") && password.equals(newUser.getPassword())) {

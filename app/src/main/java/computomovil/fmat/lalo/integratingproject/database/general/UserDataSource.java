@@ -1,4 +1,4 @@
-package computomovil.fmat.lalo.integratingproject.database.user;
+package computomovil.fmat.lalo.integratingproject.database.general;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import computomovil.fmat.lalo.integratingproject.model.User;
 
@@ -18,22 +16,22 @@ import computomovil.fmat.lalo.integratingproject.model.User;
  */
 public class UserDataSource {
     private SQLiteDatabase database;
-    private UserDBHelper userDBHelper;
+    private DBHelper DBHelper;
     private String[] allColumns = {
             UserContract.COLUMN_NAME_USERNAME,
             UserContract.COLUMN_NAME_PASSWORD,
     };
 
     public UserDataSource(Context context) {
-        userDBHelper = new UserDBHelper(context);
+        DBHelper = new DBHelper(context);
     }
 
     public void open() throws SQLException {
-        database = userDBHelper.getWritableDatabase();
+        database = DBHelper.getWritableDatabase();
     }
 
     public void close() {
-        userDBHelper.close();
+        DBHelper.close();
     }
 
 
@@ -56,25 +54,6 @@ public class UserDataSource {
         newRowId = database.insert(UserContract.TABLE_NAME, null, values);
         this.close();
         return newRowId;
-    }
-
-    /**
-     * Function oriented to recovery all Alumno's rows from Database
-     *
-     * @return List of Alumnos from Database
-     */
-    public List<User> getAllUsers() {
-        List<User> usuarios = new ArrayList<>();
-        User usuario;
-        Cursor cursor = database.query(UserContract.TABLE_NAME, allColumns, null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            usuario = cursorToUser(cursor);
-            usuarios.add(usuario);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return usuarios;
     }
 
     private User cursorToUser(Cursor cursor) {
