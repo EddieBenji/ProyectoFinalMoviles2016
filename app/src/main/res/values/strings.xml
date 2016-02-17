@@ -7,4 +7,7 @@
     <string name="lbl_addStudent">Agregar estudiante</string>
     <string name="lbl_delete">Eliminar</string>
     <string name="lbl_update">Actualizar</string>
+    <string name="title_activity_form_user">FormUser</string>
+    <string name="register">Registrate</string>
+    <string name="login">Login</string>
 </resources>

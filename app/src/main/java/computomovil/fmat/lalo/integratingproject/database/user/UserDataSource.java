@@ -44,11 +44,17 @@ public class UserDataSource {
      * @return row ID of the newly Alumno inserted row, or -1
      */
     public long insertUser(User userToInsert) {
+        try {
+            this.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         ContentValues values = new ContentValues();
         values.put(UserContract.COLUMN_NAME_USERNAME, userToInsert.getUsername());
         values.put(UserContract.COLUMN_NAME_PASSWORD, userToInsert.getPassword());
         long newRowId;
         newRowId = database.insert(UserContract.TABLE_NAME, null, values);
+        this.close();
         return newRowId;
     }
 
@@ -76,12 +82,18 @@ public class UserDataSource {
     }
 
     public User getUserByUsername(String username){
+        try {
+            this.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Cursor cursor = database.rawQuery(UserContract.SQL_SELECT_USER, new String[]{username});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             return new User(cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_USERNAME)),
                     cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_PASSWORD)));
         }
+        this.close();
         return new User("empty", "empty");
     }
 }

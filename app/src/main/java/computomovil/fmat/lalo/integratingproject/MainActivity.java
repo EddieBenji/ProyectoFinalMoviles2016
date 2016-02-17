@@ -46,4 +46,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), StudentList.class);
         startActivity(intent);
     }
+
+    public void registerNewStudent(View view) {
+        Intent intent = new Intent(getApplicationContext(), FormUser.class);
+        startActivity(intent);
+    }
 }

@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".StudentList" />
-        <activity android:name=".FormStudent"></activity>
+        <activity android:name=".FormStudent" />
+        <activity
+            android:name=".FormUser"
+            android:label="@string/title_activity_form_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
