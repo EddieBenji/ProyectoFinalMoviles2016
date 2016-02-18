@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
-        android:text="Username:"
+        android:text="@string/formLblUser"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_alignStart="@+id/textView4"
         android:layout_below="@+id/textView4"
         android:layout_marginTop="116dp"
-        android:text="Password:"
+        android:text="@string/formLblPassword"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -63,5 +63,5 @@
         android:layout_below="@+id/txtNewPassword"
         android:layout_marginTop="81dp"
         android:onClick="saveUser"
-        android:text="Register" />
+        android:text="@string/formLblRegister" />
 </RelativeLayout>

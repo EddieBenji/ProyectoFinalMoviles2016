@@ -60,19 +60,22 @@ public class UserDataSource {
         return new User(cursor.getString(0), cursor.getString(1));
     }
 
-    public User getUserByUsername(String username){
+    public User getUserByUsername(String username) {
         try {
             this.open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        User temp;
         Cursor cursor = database.rawQuery(UserContract.SQL_SELECT_USER, new String[]{username});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            return new User(cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_USERNAME)),
+            temp = new User(cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_USERNAME)),
                     cursor.getString(cursor.getColumnIndex(UserContract.COLUMN_NAME_PASSWORD)));
+        } else {
+            temp = new User("empty", "empty");
         }
         this.close();
-        return new User("empty", "empty");
+        return temp;
     }
 }

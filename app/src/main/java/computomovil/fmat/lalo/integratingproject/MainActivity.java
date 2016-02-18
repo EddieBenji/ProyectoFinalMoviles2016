@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 
 import computomovil.fmat.lalo.integratingproject.database.general.UserDataSource;
@@ -17,12 +18,16 @@ import computomovil.fmat.lalo.integratingproject.model.User;
 public class MainActivity extends AppCompatActivity {
 
     UserDataSource userDataSource;
+    User newUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (!getPreferences(Context.MODE_PRIVATE).getString("username", "NA").equals("NA")) {
+        if (!getSharedPreferences("login",Context.MODE_PRIVATE).getString("username", "NA").equals("NA")) {
+            newUser = new User(getSharedPreferences("login",Context.MODE_PRIVATE).getString("username", "NA"),
+                    getSharedPreferences("login",Context.MODE_PRIVATE).getString("password", "NA"));
             startStudentListActivity();
         }
         userDataSource = new UserDataSource(getApplicationContext());
@@ -36,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        SharedPreferences.Editor ed = getPreferences(Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor ed = getSharedPreferences("login",Context.MODE_PRIVATE).edit();
         String username = ((TextView) findViewById(R.id.txtUser)).getText().toString();
         String password = ((TextView) findViewById(R.id.txtPassword)).getText().toString();
 
 
-        User newUser = userDataSource.getUserByUsername(username);
+        newUser = userDataSource.getUserByUsername(username);
         if (!newUser.getUsername().equals("empty") && password.equals(newUser.getPassword())) {
             ed.putString("username", newUser.getUsername());
             ed.putString("password", newUser.getPassword());
@@ -52,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void startStudentListActivity(){
+    private void startStudentListActivity() {
         Intent intent = new Intent(getApplicationContext(), StudentList.class);
+        intent.putExtra("userInSession", newUser);
         startActivity(intent);
     }
 

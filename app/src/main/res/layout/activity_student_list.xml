@@ -14,11 +14,11 @@
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:onClick="addStudent"
-        android:text="@string/lbl_addStudent"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:onClick="addStudent"
+        android:text="@string/lbl_addStudent" />
 
     <ListView
         android:id="@android:id/list"
@@ -28,6 +28,16 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_add"
         android:choiceMode="singleChoice" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/lbl_closeSession"
+        android:onClick="destroySession" />
 
 
 </RelativeLayout>

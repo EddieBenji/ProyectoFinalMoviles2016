@@ -1,7 +1,9 @@
 package computomovil.fmat.lalo.integratingproject;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -52,6 +54,13 @@ public class StudentList extends ListActivity {
     protected void onResume() {
         super.onResume();
         setComponentsForWorking();
+    }
+
+    public void destroySession(View v) {
+        SharedPreferences.Editor ed = getSharedPreferences("login",Context.MODE_PRIVATE).edit();
+        ed.clear();
+        ed.apply();
+        this.finish();
     }
 
     public void addStudent(View v) {
