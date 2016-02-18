@@ -24,4 +24,7 @@ class StudentContract implements BaseColumns {
 
     public static final String SQL_DELETE_ALUMNOS =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+    public static final String SQL_SELECT_STUDENT =
+            "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME_MATRICULA + "=?";
 }

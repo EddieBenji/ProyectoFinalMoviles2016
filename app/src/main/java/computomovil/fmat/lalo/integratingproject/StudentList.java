@@ -66,12 +66,13 @@ public class StudentList extends ListActivity {
     public void onListItemClick(ListView l, View v, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
         Student studentSelected = stdService.getByMatrix(item);
-
-        Intent intent = new Intent(getApplicationContext(), FormStudent.class);
-        intent.putExtra("student", studentSelected);
-        intent.putExtra("adding", 0);
-
-        startActivity(intent);
-
+        if (studentSelected != null) {
+            System.out.println("Estudiante:");
+            System.out.println(studentSelected);
+            Intent intent = new Intent(getApplicationContext(), FormStudent.class);
+            intent.putExtra("student", studentSelected);
+            intent.putExtra("adding", 0);
+            startActivity(intent);
+        }
     }
 }

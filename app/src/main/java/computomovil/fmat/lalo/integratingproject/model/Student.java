@@ -12,9 +12,9 @@ public class Student implements Serializable {
     private String matricula, nombre, apellido;
 
     public Student() {
-        matricula = " ";
-        nombre = " ";
-        apellido = " ";
+        matricula = "";
+        nombre = "";
+        apellido = "";
     }
 
     public Student(String matricula, String nombre, String apellido) {

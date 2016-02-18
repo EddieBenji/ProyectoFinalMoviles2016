@@ -57,46 +57,44 @@ public class FormStudent extends AppCompatActivity {
         lastName = ((EditText) this.findViewById(R.id.text_lastName)).getText().toString();
     }
 
+    private boolean emptyFields() {
+        return matrix.isEmpty() || name.isEmpty() || lastName.isEmpty();
+    }
+
+    private void showMsgForEmptyFields() {
+        Toast.makeText(this, "Asegúrate de llenar todos los campos", Toast.LENGTH_LONG).show();
+    }
+
     public void updateStudent(View v) {
         getFields();
-        Student std = new Student(matrix, name, lastName);
-        try {
-            alumnoDS.open();
-            alumnoDS.updateAlumno(std);
-            alumnoDS.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (!emptyFields()) {
+            alumnoDS.updateAlumno(new Student(matrix, name, lastName));
+            Toast.makeText(this, "Estudiante actualizado", Toast.LENGTH_LONG).show();
+            this.finish();
+        } else {
+            showMsgForEmptyFields();
         }
-
-        Toast.makeText(this, "Estudiante actualizado", Toast.LENGTH_LONG).show();
-        this.finish();
     }
 
     public void saveStudent(View v) {
         getFields();
-        Student std = new Student(matrix, name, lastName);
-        try {
-            alumnoDS.open();
-            alumnoDS.insertAlumno(std);
-            alumnoDS.close();
-            Log.i("Alumno guardado: ", std.toString());
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (!emptyFields()) {
+            if (!alumnoDS.existsStudent(matrix)) {
+                alumnoDS.insertAlumno(new Student(matrix, name, lastName));
+                Toast.makeText(this, "Estudiante guardado", Toast.LENGTH_LONG).show();
+                this.finish();
+            } else {
+                Toast.makeText(this, "Esa matrícula, ya está registrada. ¡Intenta otra!",
+                        Toast.LENGTH_LONG).show();
+            }
+        } else {
+            showMsgForEmptyFields();
         }
-        Toast.makeText(this, "Estudiante guardado", Toast.LENGTH_LONG).show();
-        this.finish();
     }
 
     public void deleteStudent(View v) {
         getFields();
-        Student std = new Student(matrix, name, lastName);
-        try {
-            alumnoDS.open();
-            alumnoDS.deleteAlumno(std);
-            alumnoDS.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        alumnoDS.deleteAlumno(new Student(matrix, name, lastName));
         Toast.makeText(this, "Estudiante eliminado", Toast.LENGTH_LONG).show();
         this.finish();
     }

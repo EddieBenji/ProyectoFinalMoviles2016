@@ -34,6 +34,5 @@ public class StudentService {
             if (student.getMatricula().equalsIgnoreCase(matrix))
                 return student;
         return null;
-
     }
 }
