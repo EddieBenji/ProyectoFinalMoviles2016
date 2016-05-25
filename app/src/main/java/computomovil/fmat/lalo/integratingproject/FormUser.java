@@ -30,7 +30,8 @@ public class FormUser extends AppCompatActivity {
                 userDataSource.insertUser(newUser);
                 this.finish();
             } else {
-                Toast.makeText(this, "No se puede registrar este usuario, porque ya existe", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No se puede registrar este usuario, porque ya existe",
+                        Toast.LENGTH_LONG).show();
             }
         }
         else{
