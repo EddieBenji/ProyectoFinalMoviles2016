@@ -45,9 +45,7 @@ public class User implements Serializable{
 
         User user = (User) o;
 
-        if (username != null ? !username.equals(user.username) : user.username != null)
-            return false;
-        return !(password != null ? !password.equals(user.password) : user.password != null);
+        return username != null ? username.equals(user.username) : user.username == null && !(password != null ? !password.equals(user.password) : user.password != null);
 
     }
 
