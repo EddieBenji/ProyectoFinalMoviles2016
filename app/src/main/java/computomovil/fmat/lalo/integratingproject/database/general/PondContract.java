@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
  * Date: 25/05/16
  * Project: Integrating Project
  */
-public class PondContract implements BaseColumns {
+class PondContract implements BaseColumns {
     public static final String TABLE_NAME = "ponds";
     public static final String COLUMN_NAME_NAME = "name";
     public static final String COLUMN_NAME_DESCRIPTION = "description";
