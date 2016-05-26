@@ -22,9 +22,9 @@ public class PondContract implements BaseColumns {
             "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
                     COLUMN_NAME_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_NAME_LATITUDE + DOUBLE_TYPE +
+                    COLUMN_NAME_LATITUDE + DOUBLE_TYPE + COMMA_SEP +
                     COLUMN_NAME_LONGITUDE + DOUBLE_TYPE +
-                    " )";
+                    ")";
 
     public static final String SQL_DELETE_PONDS =
             "DROP TABLE IF EXISTS " + TABLE_NAME;

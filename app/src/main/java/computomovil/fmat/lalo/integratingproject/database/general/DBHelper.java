@@ -22,14 +22,17 @@ class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d("Usuario", UserContract.SQL_CREATE_USUARIOS);
         Log.d("Alumnos", StudentContract.SQL_CREATE_ALUMNOS);
+        Log.d("Pozas", PondContract.SQL_CREATE_PONDS);
         db.execSQL(UserContract.SQL_CREATE_USUARIOS);
         db.execSQL(StudentContract.SQL_CREATE_ALUMNOS);
+        db.execSQL(PondContract.SQL_CREATE_PONDS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(UserContract.SQL_DELETE_USUARIOS);
         db.execSQL(StudentContract.SQL_DELETE_ALUMNOS);
+        db.execSQL(PondContract.SQL_DELETE_PONDS);
         onCreate(db);
     }
 
