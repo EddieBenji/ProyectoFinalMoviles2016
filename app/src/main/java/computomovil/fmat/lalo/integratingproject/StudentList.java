@@ -84,4 +84,9 @@ public class StudentList extends ListActivity {
             startActivity(intent);
         }
     }
+
+    public void verMapa(View view){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
 }

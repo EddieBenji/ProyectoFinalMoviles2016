@@ -27,7 +27,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_add"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_above="@+id/button2" />
 
     <Button
         android:id="@+id/btn_logout"
@@ -38,6 +39,15 @@
         android:layout_alignParentTop="true"
         android:text="@string/lbl_closeSession"
         android:onClick="destroySession" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ver mapa"
+        android:id="@+id/button2"
+        android:onClick="verMapa"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
