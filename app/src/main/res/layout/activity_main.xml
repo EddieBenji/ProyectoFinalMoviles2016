@@ -73,7 +73,8 @@
             android:layout_marginTop="35dp"
             android:id="@+id/btnLogin"
             android:background="@drawable/button_selecter"
-            android:textColor="@color/textColor2"/>
+            android:textColor="@color/textColor2"
+            android:onClick="login" />
 
         <Button
             android:layout_width="match_parent"
@@ -85,7 +86,8 @@
             android:layout_marginTop="35dp"
             android:id="@+id/btnRegister"
             android:background="@drawable/button_selecter"
-            android:textColor="@color/textColor2" />
+            android:textColor="@color/textColor2"
+            android:onClick="registerNewStudent" />
 
     </RelativeLayout>
 
