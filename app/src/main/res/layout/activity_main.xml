@@ -20,14 +20,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="75dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="@string/formLblUser"
             android:textColor="@color/textColor"
             android:textSize="18dp"
             android:id="@+id/textView6"
