@@ -67,7 +67,7 @@ public class FormPond extends AppCompatActivity {
                         Log.i("Entró if", "Dentro de distancia");
                         NotificationUtils.showNotification("¡HOLA!",
                                 "Estás dentro de la zona de la poza ",
-                                this.getClass(),
+                                FormPond.class,
                                 getApplicationContext());
                         if (!hasBeenNotify) {
 
