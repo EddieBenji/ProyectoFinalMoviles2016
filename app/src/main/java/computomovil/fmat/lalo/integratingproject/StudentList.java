@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,7 +14,6 @@ import java.sql.SQLException;
 import computomovil.fmat.lalo.integratingproject.database.general.PondDataSource;
 import computomovil.fmat.lalo.integratingproject.database.general.StudentDataSource;
 import computomovil.fmat.lalo.integratingproject.model.Pond;
-import computomovil.fmat.lalo.integratingproject.model.Student;
 import computomovil.fmat.lalo.integratingproject.services.PondService;
 import computomovil.fmat.lalo.integratingproject.services.StudentService;
 
@@ -108,13 +106,13 @@ public class StudentList extends ListActivity {
         this.finish();
     }
 
-    public void addStudent(View v) {
+    /*public void addStudent(View v) {
         Student std = new Student();
         Intent intent = new Intent(getApplicationContext(), FormStudent.class);
         intent.putExtra("student", std);
         intent.putExtra("adding", 1);
         startActivity(intent);
-    }
+    }*/
 
     public void addPond(View v){
         Pond pond = new Pond();

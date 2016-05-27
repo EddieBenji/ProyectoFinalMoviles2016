@@ -13,55 +13,78 @@
     tools:showIn="@layout/activity_form_user">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:text="@string/formLblUser"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Registro"
+        android:textColor="@color/textColor"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="116dp"
-        android:text="@string/formLblPassword"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
 
-    <EditText
-        android:id="@+id/txtNewUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView4" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formLblUser"
+            android:textColor="@color/textColor"
+            android:textSize="18dp"
+            android:id="@+id/textView4"
+            android:layout_alignParentLeft="true" />
 
-    <EditText
-        android:id="@+id/txtNewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView5"
-        android:password="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:id="@+id/txtNewUsername"
+            android:inputType="text"
+            android:textColor="@color/textColor" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txtNewPassword"
-        android:layout_alignRight="@+id/txtNewPassword"
-        android:layout_below="@+id/txtNewPassword"
-        android:layout_marginTop="81dp"
-        android:onClick="saveUser"
-        android:text="@string/formLblRegister" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formLblPassword"
+            android:textColor="@color/textColor"
+            android:textSize="18dp"
+            android:id="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtNewUsername" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView5"
+            android:id="@+id/txtNewPassword"
+            android:inputType="textPassword"
+            android:textColor="@color/textColor"
+            android:password="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formLblRegister"
+            style="?android:textAppearanceSmall"
+            android:textStyle="bold"
+            android:layout_below="@+id/txtNewPassword"
+            android:layout_marginTop="35dp"
+            android:id="@+id/button"
+            android:onClick="saveUser"
+            android:background="@drawable/button_selecter"
+            android:textColor="#fff" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
 </RelativeLayout>

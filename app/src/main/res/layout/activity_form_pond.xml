@@ -134,34 +134,36 @@
             android:onClick="updatePond"
             android:clickable="true"
             android:layout_marginTop="10dp"/>
-
         <Button
             android:layout_width="match_parent"
-            android:drawableLeft="@drawable/ic_map"
-            android:onClick="lookMap"
-            android:layout_height="wrap_content"
-            android:text="Ver mapa"
-            android:id="@+id/btn_lookMap"
-            android:background="@drawable/button_selecter"
-            android:textColor="#fff"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:drawableLeft="@drawable/ic_add"
-            android:background="@drawable/button_selecter"
-            android:textColor="#fff"
             android:layout_height="wrap_content"
             android:text="Agregar Poza"
+            android:drawableLeft="@drawable/ic_add"
+            style="?android:textAppearanceSmall"
+            android:textStyle="bold"
+            android:layout_below="@+id/btn_updatePond"
+            android:layout_marginTop="15dp"
             android:id="@+id/btn_savePond"
             android:onClick="savePond"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="68dp"
+            android:background="@drawable/button_selecter"
+            android:textColor="#fff"
             />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver mapa"
+            android:drawableLeft="@drawable/ic_map"
+            style="?android:textAppearanceSmall"
+            android:textStyle="bold"
+            android:layout_below="@+id/btn_savePond"
+            android:layout_marginTop="10dp"
+            android:id="@+id/btn_lookMap"
+            android:onClick="lookMap"
+            android:background="@drawable/button_selecter"
+            android:textColor="#fff"
+            />
+
 
 
 
