@@ -63,6 +63,8 @@ public class FormPond extends AppCompatActivity {
                     // Called when a new location is found by the network location provider.
                     double distance = center.distanceTo(location);
 
+                    Log.i("MI LUGAR", location.getLatitude() + ", " + location.getLongitude());
+
                     if (distance <= DISTANCE) {
                         Log.i("Entró if", "Dentro de distancia");
                         if (!hasBeenNotify) {
