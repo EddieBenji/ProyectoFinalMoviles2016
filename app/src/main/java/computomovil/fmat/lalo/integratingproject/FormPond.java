@@ -33,13 +33,9 @@ public class FormPond extends AppCompatActivity {
     private boolean adding;
 
     //For notifications about the proximity to the pond:
-    public static final double DISTANCE = 25.0;
+    public static final double DISTANCE = 50.0;
     private Location center = new Location("");
     private boolean hasBeenNotify = false;
-
-
-    private EditText et_name;
-    private EditText et_des;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +65,7 @@ public class FormPond extends AppCompatActivity {
                         Log.i("Entró if", "Dentro de distancia");
                         NotificationUtils.showNotification("¡HOLA!",
                                 "Estás dentro de la zona de la poza ",
-                                this.getClass(),
+                                FormPond.class,
                                 getApplicationContext());
                         if (!hasBeenNotify) {
 
@@ -98,6 +94,7 @@ public class FormPond extends AppCompatActivity {
                 }
 
                 public void onProviderDisabled(String provider) {
+                    Log.i("GPS_INFO", "Enciende tu GPS");
                 }
             };
 
