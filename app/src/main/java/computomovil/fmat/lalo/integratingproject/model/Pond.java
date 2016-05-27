@@ -28,6 +28,13 @@ public class Pond implements Serializable {
         this.longitude = longitude;
     }
 
+    public Pond(String name, String description, double latitude, double longitude) {
+        this.name = name;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public String getName() {
         return name;
     }

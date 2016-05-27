@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="computomovil.fmat.lalo.integratingproject.StudentList">
 
+    <!--
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
         android:layout_alignParentTop="true"
         android:onClick="addStudent"
         android:text="@string/lbl_addStudent" />
+        -->
 
     <ListView
         android:id="@android:id/list"
@@ -26,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_add"
         android:choiceMode="singleChoice"
-        android:layout_above="@+id/button2" />
+        android:layout_above="@+id/button2"
+        android:layout_below="@+id/add_pound" />
 
     <Button
         android:id="@+id/btn_logout"
@@ -48,6 +50,19 @@
         android:onClick="verMapa"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
+        android:layout_height="wrap_content"
+        android:text="Agregar poza"
+        android:id="@+id/add_pound"
+        android:onClick="addPond"
+        android:layout_below="@+id/btn_logout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
 
 
 </RelativeLayout>
