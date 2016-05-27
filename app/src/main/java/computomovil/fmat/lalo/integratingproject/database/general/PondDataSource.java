@@ -132,7 +132,7 @@ public class PondDataSource {
 
     private Pond cursorToPond(Cursor cursor) {
         return new Pond(cursor.getInt(0), cursor.getString(1),
-                cursor.getString(2), cursor.getDouble(3), cursor.getDouble(3));
+                cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4));
     }
 
 
