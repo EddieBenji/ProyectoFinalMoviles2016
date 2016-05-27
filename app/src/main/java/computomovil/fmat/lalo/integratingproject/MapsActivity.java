@@ -37,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         pond = (Pond) getIntent().getSerializableExtra("pond");
+        current = new LatLng(21.059342, -89.6493876);
     }
 
 
@@ -54,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng location = new LatLng(pond.getLatitude(), pond.getLongitude());
+        LatLng pondLocation = new LatLng(pond.getLatitude(), pond.getLongitude());
 
 
         /*
@@ -62,12 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng currentPosition = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
 
         // Acquire a reference to the system Location Manager
-        /*
+
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
-            public void onLocationChanged(Location location) {
-                Log.i("MI LUGAR 2", location.getLatitude() + ", " + location.getLongitude());
-                current = new LatLng(location.getLatitude(),location.getLongitude());
+            public void onLocationChanged(Location currentLocationRead) {
+                Log.i("MI LUGAR 2", currentLocationRead.getLatitude() + ", " + currentLocationRead.getLongitude());
+                current = new LatLng(currentLocationRead.getLatitude(), currentLocationRead.getLongitude());
             }
 
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -86,30 +87,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
 
-
         mMap.addMarker(new MarkerOptions()
-                .position(location)
+                .position(pondLocation)
                 .snippet(pond.getDescription())
                 .title(pond.getName()));
+
         mMap.addMarker(new MarkerOptions()
                 .position(current)
                 .title("Tu posición actual"));
 
         mMap.addPolyline(new PolylineOptions().geodesic(true)
-                        .color(Color.GRAY)
-                        .add(location)
-                        .add(current)
+                .color(Color.GRAY)
+                .add(pondLocation)
+                .add(current)
         );
 
-        */
 
-
-        mMap.addMarker(new MarkerOptions()
-                .position(location)
-                .snippet(pond.getDescription())
-                .title(pond.getName()));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(pondLocation));
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }

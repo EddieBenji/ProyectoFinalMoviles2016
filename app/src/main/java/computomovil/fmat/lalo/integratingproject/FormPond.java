@@ -60,6 +60,7 @@ public class FormPond extends AppCompatActivity {
                     double distance = center.distanceTo(location);
 
                     Log.i("MI LUGAR", location.getLatitude() + ", " + location.getLongitude());
+                    setTextLocation(location.getLatitude(), location.getLongitude());
 
                     if (distance <= DISTANCE) {
                         Log.i("Entró if", "Dentro de distancia");
@@ -82,9 +83,36 @@ public class FormPond extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("app", MODE_PRIVATE);
                         preferences.edit().putBoolean("Location", false).apply();
                     }
-//                tv.setText("Latitude : " + location.getLatitude() +
-//                        " Longitude: " + location.getLongitude() +
-//                        " Distance: " + Double.toString(distance));
+                }
+
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
+
+                public void onProviderEnabled(String provider) {
+                }
+
+                public void onProviderDisabled(String provider) {
+                    Log.i("GPS_INFO", "Enciende tu GPS");
+                }
+            };
+
+            // Register the listener with the Location Manager to receive location updates
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        }else{
+            // Acquire a reference to the system Location Manager
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+            LocationListener locationListener = new LocationListener() {
+                public void onLocationChanged(Location location) {
+                    // Called when a new location is found by the network location provider.
+
+                    Log.i("Seteando el form", location.getLatitude() + ", " + location.getLongitude());
+                    setTextLocation(location.getLatitude(), location.getLongitude());
+
                 }
 
                 public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -112,6 +140,8 @@ public class FormPond extends AppCompatActivity {
 
     }
 
+
+
     private void setButton(Button btn, boolean isAvailable) {
         btn.setClickable(isAvailable);
         btn.setEnabled(isAvailable);
@@ -130,6 +160,12 @@ public class FormPond extends AppCompatActivity {
         ((EditText) this.findViewById(R.id.text_descriptionPond)).setText(pond.getDescription());
         ((EditText) this.findViewById(R.id.text_latPond)).setText(String.valueOf(pond.getLatitude()));
         ((EditText) this.findViewById(R.id.text_lngPond)).setText(String.valueOf(pond.getLongitude()));
+    }
+
+    private void setTextLocation(double latitude, double longitude) {
+        ((EditText) this.findViewById(R.id.text_latPond)).setText(String.valueOf(latitude));
+        ((EditText) this.findViewById(R.id.text_lngPond)).setText(String.valueOf(longitude));
+
     }
 
     private void getFields() {
