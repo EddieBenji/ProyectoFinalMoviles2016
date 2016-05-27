@@ -50,59 +50,61 @@ public class FormPond extends AppCompatActivity {
         pond = (Pond) getIntent().getSerializableExtra("pond");
         adding = (int) getIntent().getSerializableExtra("adding") == 1;
 
-        //Notification about the proximity to the pond:
-        center.setLatitude(pond.getLatitude());
-        center.setLongitude(pond.getLongitude());
+        if (!adding) {
+            //Notification about the proximity to the pond:
+            center.setLatitude(pond.getLatitude());
+            center.setLongitude(pond.getLongitude());
 
-        // Acquire a reference to the system Location Manager
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            // Acquire a reference to the system Location Manager
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        LocationListener locationListener = new LocationListener() {
-            public void onLocationChanged(Location location) {
-                // Called when a new location is found by the network location provider.
-                double distance = center.distanceTo(location);
+            LocationListener locationListener = new LocationListener() {
+                public void onLocationChanged(Location location) {
+                    // Called when a new location is found by the network location provider.
+                    double distance = center.distanceTo(location);
 
-                if (distance <= DISTANCE) {
-                    Log.i("Entró if", "Dentro de distancia");
-                    if (!hasBeenNotify) {
-                        NotificationUtils.showNotification("¡HOLA!",
-                                "Estás dentro de la zona de la poza ",
-                                this.getClass(),
-                                getApplicationContext());
-                        hasBeenNotify = true;
+                    if (distance <= DISTANCE) {
+                        Log.i("Entró if", "Dentro de distancia");
+                        if (!hasBeenNotify) {
+                            NotificationUtils.showNotification("¡HOLA!",
+                                    "Estás dentro de la zona de la poza ",
+                                    this.getClass(),
+                                    getApplicationContext());
+                            hasBeenNotify = true;
 
                         /*We put in the shared preferences, that you are in the location allowed*/
-                        SharedPreferences preferences = getSharedPreferences("app", MODE_PRIVATE);
-                        preferences.edit().putBoolean("Location", true).apply();
-                    }
+                            SharedPreferences preferences = getSharedPreferences("app", MODE_PRIVATE);
+                            preferences.edit().putBoolean("Location", true).apply();
+                        }
 
-                } else {
-                    hasBeenNotify = false;
+                    } else {
+                        hasBeenNotify = false;
                      /*We put in the shared preferences, that you are not in the location allowed*/
-                    SharedPreferences preferences = getSharedPreferences("app", MODE_PRIVATE);
-                    preferences.edit().putBoolean("Location", false).apply();
-                }
+                        SharedPreferences preferences = getSharedPreferences("app", MODE_PRIVATE);
+                        preferences.edit().putBoolean("Location", false).apply();
+                    }
 //                tv.setText("Latitude : " + location.getLatitude() +
 //                        " Longitude: " + location.getLongitude() +
 //                        " Distance: " + Double.toString(distance));
+                }
+
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
+
+                public void onProviderEnabled(String provider) {
+                }
+
+                public void onProviderDisabled(String provider) {
+                }
+            };
+
+            // Register the listener with the Location Manager to receive location updates
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
             }
 
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-            }
-
-            public void onProviderEnabled(String provider) {
-            }
-
-            public void onProviderDisabled(String provider) {
-            }
-        };
-
-        // Register the listener with the Location Manager to receive location updates
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         }
-
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
 
         this.setTexts();
