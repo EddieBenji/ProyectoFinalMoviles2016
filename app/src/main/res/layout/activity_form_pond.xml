@@ -9,131 +9,160 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="computomovil.fmat.lalo.integratingproject.FormPond">
 
-    <Button
-        android:layout_width="match_parent"
-        android:background="@drawable/button_selecter"
-        android:textColor="#FFF"
-        android:layout_height="wrap_content"
-        android:text="Agregar Poza"
-        android:id="@+id/btn_savePond"
-        android:onClick="savePond"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="68dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Nombre"
-        android:id="@+id/textView8"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_namePond"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Descripción"
-        android:id="@+id/textView9"
-        android:layout_below="@+id/text_namePond"
-        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_descriptionPond"
-        android:layout_below="@+id/textView9"
-        android:layout_alignRight="@+id/text_namePond"
-        android:layout_alignEnd="@+id/text_namePond"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Latitud"
-        android:id="@+id/textView10"
-        android:layout_below="@+id/text_descriptionPond"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Nombre"
+            android:textColor="@color/textColor"
+            android:id="@+id/textView8"
+            android:layout_alignParentLeft="true"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
-        android:ems="10"
-        android:id="@+id/text_latPond"
-        android:layout_below="@+id/textView10"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/text_descriptionPond"
-        android:layout_alignEnd="@+id/text_descriptionPond" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Longitud"
-        android:id="@+id/textView11"
-        android:layout_below="@+id/text_latPond"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_namePond"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
-        android:ems="10"
-        android:id="@+id/text_lngPond"
-        android:layout_below="@+id/textView11"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/text_latPond"
-        android:layout_alignEnd="@+id/text_latPond" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Descripción"
+            android:textColor="@color/textColor"
+            android:id="@+id/textView9"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text_namePond"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Eliminar"
-        android:id="@+id/btn_deletePond"
-        android:layout_above="@+id/btn_savePond"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="deletePond"
-        android:layout_marginBottom="29dp"
-        android:layout_toLeftOf="@+id/textView10"
-        android:layout_toStartOf="@+id/textView10" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Actualizar"
-        android:id="@+id/btn_updatePond"
-        android:layout_alignTop="@+id/btn_deletePond"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="updatePond"
-        android:layout_toEndOf="@+id/textView10"
-        android:layout_toRightOf="@+id/textView10" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="lookMap"
-        android:layout_height="wrap_content"
-        android:text="Ver mapa"
-        android:id="@+id/btn_lookMap"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_descriptionPond"
+            android:layout_below="@+id/textView9"
+            android:layout_alignRight="@+id/text_namePond"
+            android:layout_alignEnd="@+id/text_namePond"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Latitud"
+            android:textColor="@color/textColor"
+            android:id="@+id/textView10"
+            android:layout_below="@+id/text_descriptionPond"
+            android:layout_alignParentLeft="true"/>
+
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned"
+            android:ems="10"
+            android:id="@+id/text_latPond"
+            android:layout_below="@+id/textView10"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/text_descriptionPond"
+            android:layout_alignEnd="@+id/text_descriptionPond" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Longitud"
+            android:textColor="@color/textColor"
+            android:id="@+id/textView11"
+            android:layout_below="@+id/text_latPond"
+            android:layout_alignParentLeft="true" />
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned"
+            android:ems="10"
+            android:id="@+id/text_lngPond"
+            android:layout_below="@+id/textView11"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/text_latPond"
+            android:layout_alignEnd="@+id/text_latPond" />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="27dp"
+            android:drawableLeft="@drawable/ic_clear"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:text="Eliminar"
+            android:id="@+id/btn_deletePond"
+            android:layout_below="@+id/text_lngPond"
+            android:onClick="deletePond"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+             />
+
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="27dp"
+            android:drawableLeft="@drawable/ic_edit"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:text="Actualizar"
+            android:id="@+id/btn_updatePond"
+            android:layout_below="@+id/text_lngPond"
+            android:onClick="updatePond"
+            android:clickable="true"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/ic_map"
+            android:onClick="lookMap"
+            android:layout_height="wrap_content"
+            android:text="Ver mapa"
+            android:id="@+id/btn_lookMap"
+            android:background="@drawable/button_selecter"
+            android:textColor="#fff"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/ic_add"
+            android:background="@drawable/button_selecter"
+            android:textColor="#fff"
+            android:layout_height="wrap_content"
+            android:text="Agregar Poza"
+            android:id="@+id/btn_savePond"
+            android:onClick="savePond"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="68dp"
+            />
+
+
+
 </RelativeLayout>
