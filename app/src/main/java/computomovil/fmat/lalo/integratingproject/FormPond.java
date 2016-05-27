@@ -67,11 +67,12 @@ public class FormPond extends AppCompatActivity {
 
                     if (distance <= DISTANCE) {
                         Log.i("Entró if", "Dentro de distancia");
+                        NotificationUtils.showNotification("¡HOLA!",
+                                "Estás dentro de la zona de la poza ",
+                                this.getClass(),
+                                getApplicationContext());
                         if (!hasBeenNotify) {
-                            NotificationUtils.showNotification("¡HOLA!",
-                                    "Estás dentro de la zona de la poza ",
-                                    this.getClass(),
-                                    getApplicationContext());
+
                             hasBeenNotify = true;
 
                         /*We put in the shared preferences, that you are in the location allowed*/
