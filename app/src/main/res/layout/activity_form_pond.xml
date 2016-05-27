@@ -18,7 +18,9 @@
         android:id="@+id/btn_savePond"
         android:onClick="savePond"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="68dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -109,6 +111,7 @@
         android:layout_above="@+id/btn_savePond"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:onClick="deletePond"
         android:layout_marginBottom="29dp"
         android:layout_toLeftOf="@+id/textView10"
         android:layout_toStartOf="@+id/textView10" />
@@ -121,6 +124,16 @@
         android:layout_alignTop="@+id/btn_deletePond"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:onClick="updatePond"
         android:layout_toEndOf="@+id/textView10"
         android:layout_toRightOf="@+id/textView10" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="lookMap"
+        android:layout_height="wrap_content"
+        android:text="Ver mapa"
+        android:id="@+id/btn_lookMap"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

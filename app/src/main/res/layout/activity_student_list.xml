@@ -29,7 +29,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:choiceMode="singleChoice"
-        android:layout_above="@+id/button2"
         android:layout_below="@+id/add_pound" />
 
     <Button
@@ -41,15 +40,6 @@
         android:layout_alignParentTop="true"
         android:text="@string/lbl_closeSession"
         android:onClick="destroySession" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ver mapa"
-        android:id="@+id/button2"
-        android:onClick="verMapa"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="match_parent"

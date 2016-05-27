@@ -180,7 +180,7 @@ public class PondDataSource {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             temp = new Pond(cursor.getInt(0), cursor.getString(1),
-                    cursor.getString(2), cursor.getDouble(3), cursor.getDouble(3));
+                    cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4));
         } else {
             temp = new Pond(0, "empty", "empty", 0.0, 0.0);
         }

@@ -1,7 +1,9 @@
 package computomovil.fmat.lalo.integratingproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,14 +24,32 @@ public class FormPond extends AppCompatActivity {
     private Pond pond;
     private boolean adding;
 
+    private EditText et_name;
+    private EditText et_des;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_form_pond);
+
+        pondDS = new PondDataSource(getApplicationContext());
+        pond = (Pond) getIntent().getSerializableExtra("pond");
+        adding = (int) getIntent().getSerializableExtra("adding") == 1;
+
+        this.setTexts();
+        this.setButtons();
+
+    }
+
     private void setButton(Button btn, boolean isAvailable) {
         btn.setClickable(isAvailable);
         btn.setEnabled(isAvailable);
     }
-    
+
     private void setButtons(){
         setButton((Button) findViewById(R.id.btn_deletePond), !adding);
         setButton((Button) findViewById(R.id.btn_updatePond), !adding);
+        setButton((Button) findViewById(R.id.btn_lookMap), !adding);
         setButton((Button) findViewById(R.id.btn_savePond), adding);
     }
 
@@ -38,20 +58,6 @@ public class FormPond extends AppCompatActivity {
         ((EditText) this.findViewById(R.id.text_descriptionPond)).setText(pond.getDescription());
         ((EditText) this.findViewById(R.id.text_latPond)).setText(String.valueOf(pond.getLatitude()));
         ((EditText) this.findViewById(R.id.text_lngPond)).setText(String.valueOf(pond.getLongitude()));
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_pond);
-
-        pondDS = new PondDataSource(getApplicationContext());
-        pond = (Pond) getIntent().getSerializableExtra("student");
-        adding = (int) getIntent().getSerializableExtra("adding") == 1;
-
-        this.setTexts();
-        this.setButtons();
-
     }
 
     private void getFields(){
@@ -88,6 +94,8 @@ public class FormPond extends AppCompatActivity {
             }
             Toast.makeText(this, "Poza actualizada", Toast.LENGTH_LONG).show();
             this.finish();
+        }else{
+            showMsgForEmptyFields();
         }
     }
 
@@ -97,11 +105,12 @@ public class FormPond extends AppCompatActivity {
             try {
                 if (!pondDS.existsPond(name)) {
                     pondDS.insertPond(new Pond(name, description, latitud, longitud));
+                    Log.i("DATA_POND", name + description + latitud + longitud);
                     Toast.makeText(this, "Poza guardado", Toast.LENGTH_LONG).show();
                     this.finish();
                 } else {
-                    //Toast.makeText(this, "Ese nombre, ya está registrado. ¡Intenta otro!",
-                      //      Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Ese nombre, ya está registrado. ¡Intenta otro!",
+                            Toast.LENGTH_LONG).show();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -120,6 +129,12 @@ public class FormPond extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void lookMap(View view){
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("pond", pond);
+        startActivity(intent);
     }
 
 }

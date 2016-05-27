@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -147,10 +148,5 @@ public class StudentList extends ListActivity {
             startActivity(intent);
         }
 
-    }
-
-    public void verMapa(View view){
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
     }
 }
