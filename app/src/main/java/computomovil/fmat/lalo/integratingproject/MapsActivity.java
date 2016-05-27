@@ -1,5 +1,6 @@
 package computomovil.fmat.lalo.integratingproject;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import computomovil.fmat.lalo.integratingproject.model.Pond;
 
@@ -44,7 +46,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng location = new LatLng(pond.getLatitude(), pond.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(location).title(pond.getName()));
+
+        /* ACÁ DEBE DE IR LA LATITUD Y LONGITUD ACTUAL*/
+        LatLng currentPosition = new LatLng(0, 0);
+
+        mMap.addMarker(new MarkerOptions()
+                .position(location)
+                .snippet(pond.getDescription())
+                .title(pond.getName()));
+        mMap.addMarker(new MarkerOptions()
+                .position(currentPosition)
+                .title("Tu posición actual"));
+
+        // Polylines are useful for marking paths and routes on the map.
+        mMap.addPolyline(new PolylineOptions().geodesic(true)
+                        .color(Color.GRAY)
+                        .add(location)
+                        .add(currentPosition)
+        );
+
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 }

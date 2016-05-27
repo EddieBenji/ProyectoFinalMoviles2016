@@ -55,6 +55,7 @@ public class FormPond extends AppCompatActivity {
 
     private void setTexts(){
         ((EditText) this.findViewById(R.id.text_namePond)).setText(pond.getName());
+        this.findViewById(R.id.text_namePond).setEnabled(adding);
         ((EditText) this.findViewById(R.id.text_descriptionPond)).setText(pond.getDescription());
         ((EditText) this.findViewById(R.id.text_latPond)).setText(String.valueOf(pond.getLatitude()));
         ((EditText) this.findViewById(R.id.text_lngPond)).setText(String.valueOf(pond.getLongitude()));

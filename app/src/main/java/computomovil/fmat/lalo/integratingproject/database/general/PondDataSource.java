@@ -94,7 +94,7 @@ public class PondDataSource {
                 values,
                 PondContract.COLUMN_NAME_NAME + "=?",
                 new String[]{
-                        pond.getIdInString()
+                        pond.getName()
                 }
         );
         this.close();
