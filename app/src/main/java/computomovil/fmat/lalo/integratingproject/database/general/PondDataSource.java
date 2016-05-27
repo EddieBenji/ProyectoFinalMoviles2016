@@ -75,8 +75,8 @@ public class PondDataSource {
     }
 
     /**
-     * It updates the pond object, by setting the name, description, latitude and longitude of the pond.
-     * It's necessary that the pond has the ID.
+     * It updates the pond object, by setting the description, latitude and longitude of the pond.
+     * It's necessary that the pond has the same name as before.
      *
      * @param pond
      * @return
@@ -92,7 +92,7 @@ public class PondDataSource {
         long newRowId = database.update(
                 PondContract.TABLE_NAME,
                 values,
-                PondContract._ID + "=?",
+                PondContract.COLUMN_NAME_NAME + "=?",
                 new String[]{
                         pond.getIdInString()
                 }
