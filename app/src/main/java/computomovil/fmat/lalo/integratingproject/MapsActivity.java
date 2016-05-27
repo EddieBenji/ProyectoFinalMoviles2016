@@ -103,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         );
 
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(pondLocation));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pondLocation, 16));
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
